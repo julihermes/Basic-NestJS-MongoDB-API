@@ -32,6 +32,14 @@ export class MongoExceptionFilter implements ExceptionFilter {
         };
         break;
       }
+      case 'ValidationError': {
+        error = {
+          statusCode: HttpStatus.BAD_REQUEST,
+          message: ExceptionMessage.mongooseError.ValidationError,
+          error: exception.message,
+        };
+        break;
+      }
       default: {
         error = {
           statusCode: HttpStatus.INTERNAL_SERVER_ERROR,

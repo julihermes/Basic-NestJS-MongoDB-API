@@ -8,7 +8,11 @@ export class User {
   @Prop()
   name: string;
 
-  @Prop()
+  @Prop({
+    required: true,
+    unique: true,
+    uniqueCaseInsensitive: true,
+  })
   email: string;
 
   @Prop()

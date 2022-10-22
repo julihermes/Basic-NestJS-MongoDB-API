@@ -15,7 +15,7 @@ export class UsersService {
   }
 
   list() {
-    return this.UserRepository.find({});
+    return this.UserRepository.find();
   }
 
   show(id: string) {
@@ -42,6 +42,14 @@ export class UsersService {
   remove(id: string) {
     return this.UserRepository.findByIdAndDelete(id).then((user) => {
       if (!user) throw new NotFoundException(`User not found with id '${id}'`);
+      return user;
+    });
+  }
+
+  findByEmail(email: string) {
+    return this.UserRepository.findOne({ email }).then((user) => {
+      if (!user)
+        throw new NotFoundException(`User not found with email '${email}'`);
       return user;
     });
   }
