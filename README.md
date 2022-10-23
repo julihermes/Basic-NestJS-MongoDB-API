@@ -1,73 +1,70 @@
 <p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="200" alt="Nest Logo" /></a>
+  <img src="https://i.imgur.com/29qObnG.png" width="250" alt="Nest Logo" />
 </p>
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
+# Basic NestJS MongoDB API
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://coveralls.io/github/nestjs/nest?branch=master" target="_blank"><img src="https://coveralls.io/repos/github/nestjs/nest/badge.svg?branch=master#9" alt="Coverage" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+<p>Basic NestJS REST API project integrated with MongoDB to use as a base to start new projects.<p>
 
-## Description
+## Features
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+<ul>
+  <li>A folder structure to follow (if you want)</li>
+  <li>MongoDB connection (mongoose)</li>
+  <li>Rapid MongoDB Repository</li>
+  <li>MongoDB exceptions filters</li>
+  <li>User module</li>
+  <li>Auth module (Passport, JWT, bcrypt, guards)</li>
+  <li>DTO Validation</li>
+  <li>Configs structure</li>
+  <li>Constants structure</li>
+</ul>
 
 ## Installation
 
+<p>Clone this repo and run:</p>
+
 ```bash
-$ npm install
+$ yarn install
 ```
 
 ## Running the app
 
 ```bash
 # development
-$ npm run start
+$ yarn start
 
 # watch mode
-$ npm run start:dev
+$ yarn start:dev
 
 # production mode
-$ npm run start:prod
+$ yarn start:prod
 ```
 
-## Test
+The project can be access in `http://localhost:3000`
 
-```bash
-# unit tests
-$ npm run test
+## First things to do
 
-# e2e tests
-$ npm run test:e2e
+Before run the project, duplicate the file `.env.example` to `.env` and changes the vars properly.
 
-# test coverage
-$ npm run test:cov
-```
+After run the project, register a user using `http://localhost:3000/auth/register` to be able to login and access others controllers (controllers using JWT guard).
 
-## Support
+<i>PS. the register endpoint has no security level like a activation step or something like that. You need to implement any security level if your project needs this, or you can remove this endpoint after create the first user (other users can be added using Users endpoint).</i>
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
+## Creating new modules
 
-## Stay in touch
+You can start development as you want like a NestJS common project. You can use Users Module as reference to implement new modules. You can also use `nest g` to create the files, but you have to adapt to use mongoDB, use Users Module as reference.
 
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
+## Postman collection
 
-## License
+I created a Postman collection to use this project with Auth and Users endpoints and a script to save JWT token in a collection variable, just running login endpoint. you can access here:
+`https://www.getpostman.com/collections/29e8e02250259a261754`
 
-Nest is [MIT licensed](LICENSE).
+You can use this collection to developing your project by adding new endpoints as you develops.
+
+## To Do
+
+<ul>
+  <li>All the tests</li>
+  <li>A generator to create all resources files ready to use</li>
+</ul>
