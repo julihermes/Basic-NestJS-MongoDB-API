@@ -1,10 +1,10 @@
 import {
-  Request,
-  Controller,
-  Post,
-  UseGuards,
-  Get,
   Body,
+  Controller,
+  Get,
+  Post,
+  Request,
+  UseGuards,
 } from '@nestjs/common';
 import { AuthService } from './auth.service';
 import { RegisterDto } from './dto/register.dto';

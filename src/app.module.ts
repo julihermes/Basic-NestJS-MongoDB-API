@@ -1,11 +1,12 @@
 import { Module } from '@nestjs/common';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { MongooseModule } from '@nestjs/mongoose';
-import { UsersModule } from './resources/users/users.module';
-import { AuthModule } from './resources/auth/auth.module';
+import * as Autopopulate from 'mongoose-autopopulate';
 import appConfig from './common/configs/app';
-import securityConfig from './common/configs/security';
 import databaseConfig from './common/configs/database';
+import securityConfig from './common/configs/security';
+import { AuthModule } from './resources/auth/auth.module';
+import { UsersModule } from './resources/users/users.module';
 
 @Module({
   imports: [
@@ -16,6 +17,10 @@ import databaseConfig from './common/configs/database';
     MongooseModule.forRootAsync({
       useFactory: async (configService: ConfigService) => ({
         uri: configService.get<string>('mongodb.uri'),
+        connectionFactory: (connection) => {
+          connection.plugin(Autopopulate);
+          return connection;
+        },
       }),
       inject: [ConfigService],
     }),
