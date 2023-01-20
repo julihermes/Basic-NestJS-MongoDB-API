@@ -3,7 +3,7 @@ import { JwtService } from '@nestjs/jwt';
 import * as bcrypt from 'bcrypt';
 import { UsersService } from '../users/users.service';
 import { RegisterDto } from './dto/register.dto';
-import { User } from './types/user.type';
+import { UserInterface } from './interfaces/user.interface';
 
 @Injectable()
 export class AuthService {
@@ -21,7 +21,7 @@ export class AuthService {
     throw new UnauthorizedException();
   }
 
-  async generateToken(user: User) {
+  async generateToken(user: UserInterface) {
     const payload = { sub: user._id, email: user.email, name: user.name };
 
     return {
