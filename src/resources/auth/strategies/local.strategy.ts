@@ -3,7 +3,7 @@ import { PassportStrategy } from '@nestjs/passport';
 import { Strategy } from 'passport-local';
 import { ExceptionMessage } from 'src/common/constants/exception.message';
 import { AuthService } from '../auth.service';
-import { User } from '../types/user.type';
+import { UserInterface } from '../interfaces/user.interface';
 
 @Injectable()
 export class LocalStrategy extends PassportStrategy(Strategy) {
@@ -11,7 +11,7 @@ export class LocalStrategy extends PassportStrategy(Strategy) {
     super({ usernameField: 'email' });
   }
 
-  async validate(email: string, password: string): Promise<User> {
+  async validate(email: string, password: string): Promise<UserInterface> {
     try {
       return await this.authService.validateUser(email, password);
     } catch (e) {
